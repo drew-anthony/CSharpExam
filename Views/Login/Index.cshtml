@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model User 
+<h1>Welcome!</h1>
+ <div class="jumbotron">
+ <!---heading---->
+     <header class="heading"> Registration</header><hr>
+	 <form class="form" asp-action="register" asp-controller="Login" method="post">
+	<!---Form starting----> 
+	<div class="row ">
+	 <!--- For Name---->
+         <div class="col-sm-12">
+             <div class="row">
+			     <div class="col-xs-4">
+          	         <label class="UserName">Name :</label> </div>
+		         <div class="col-xs-8">
+					 <span asp-validation-for="UserName"></span>
+		             <input asp-for="UserName" type="text" id="fname" placeholder="Enter your Name" class="form-control ">
+             </div>
+		      </div>
+		 </div>
+		 
+		 
+         <div class="col-sm-12">
+		     <div class="row">
+			     <div class="col-xs-4">
+                     <label class="Alias">Alias :</label></div>
+				<div class ="col-xs-8">
+					 <span asp-validation-for="Alias"></span>	 
+		             <input asp-for="Alias" type="text" id="lname" placeholder="Enter your alias" class="form-control last">
+                </div>
+		     </div>
+		 </div>
+     <!-----For email---->
+		 <div class="col-sm-12">
+		     <div class="row">
+			     <div class="col-xs-4">
+		             <label class="mail" >Email :</label></div>
+			     <div class="col-xs-8"	>
+					<span asp-validation-for="Email"></span> 
+			        <input asp-for="Email" type="email"  id="email" placeholder="Enter your email" class="form-control" >
+		         </div>
+		     </div>
+		 </div>
+	 <!-----For Password and confirm password---->
+          <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Password :</label></div>
+				  <div class="col-xs-8">
+						<span asp-validation-for="Password"></span>
+			        	<input asp-for="Password" type="password"  id="password" placeholder="Enter your Password" class="form-control">
+				 </div>
+          </div>
+		  </div>
+
+		  <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Confirm Password :</label></div>
+				  <div class="col-xs-8">
+						<span asp-validation-for="Confirm"></span>
+			        	<input asp-for="Confirm" type="password"  id="Confirm" placeholder="Confirm your Password" class="form-control">
+				 </div>
+          </div>
+		  </div>
+		  
+     <!-----------For Phone number-------->
+         <div class="col-sm-12">
+		     <div class="col-sm-12">
+		         <button type="submit" class="btn btn-warning">Submit</button>
+		   </div>
+		 </div>
+	 </form>	 		 		 
+	 </div>
+<div class="jumbotron pt-5">
+    <header class="heading"> Login</header>
+    <hr>
+    <form class="form" asp-action="login" asp-controller="Login" method="post">
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="mail">Email :</label></div>
+            <div class="col-xs-8">
+                <span asp-validation-for="Email"></span>
+                <input asp-for="Email" type="email" name="email" id="email" placeholder="Enter your email" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="pass">Password :</label></div>
+            <div class="col-xs-8">
+                <span asp-validation-for="Password"></span>
+                <input asp-for="Password" type="password" name="password" id="password" placeholder="Enter your Password"
+                    class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+    </form>
+</div>
+</div>

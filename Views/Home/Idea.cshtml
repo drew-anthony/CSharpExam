@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Post likes";
+}
+<a href="/bright_ideas">Bright Ideas</a>   <a href="/logout">Logout</a>
+<h3><a href="/users/@ViewBag.SelectedIdea.Owner.UserId">@ViewBag.SelectedIdea.Owner.Alias</a> says:</h3>
+<p>@ViewBag.SelectedIdea.UserIdea</p>
+
+<h3>Poeple who liked this post:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Alias</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  @{
+    foreach (var like in ViewBag.LikedBy)
+    {
+      <tr>
+        <td><a href="/users/@like.User.UserId">@like.User.Alias</a></td>
+        <td>@like.User.UserName</td>
+      </tr>
+    }
+  }
+  </tbody>
+</table>

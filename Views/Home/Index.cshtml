@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Bright Ideas";
+}
+<h1>Hi @ViewBag.name</h1>
+<a href="logout">Log Out</a>
+<form action="/newidea" method="POST">
+        <label for="UserIdea">Your Idea:</label>
+        <textarea id="UserIdea" type="text" name="UserIdea"></textarea>
+        <button class="btn btn secondary" type="submit" name="submit">Idea</button>
+</form>
+@{
+    foreach (var idea in ViewBag.AllIdeas)
+    {
+        <h3><a href="/users/@idea.UserId">@idea.Owner.Alias</a> says:</h3>
+        
+            @if(idea.UserId == ViewBag.CurrentUser.UserId)
+            {
+                <a href="/deleteidea/@idea.IdeasId">Delete</a>
+            }
+        
+        <p>@idea.UserIdea</p>
+        <p>
+        @{
+            bool liker = true;
+            foreach (var like in idea.LikedBy)
+            {
+                if (like.UserId == ViewBag.CurrentUser.UserId)
+                    {
+                        liker = false; 
+                    }
+            }
+            if(liker)
+            {
+                <a href="/like/@idea.IdeasId">Like</a>
+            }
+            else
+            {
+                <span>You Already Liked This Idea</span>
+            }
+        }
+          <a href="/bright_ideas/@idea.IdeasId">@idea.LikedBy.Count People</a> Like this.</p>
+    }
+}
